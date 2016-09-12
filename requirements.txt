@@ -1,0 +1,3 @@
+openpyxl
+sqlite3
+telnetlib
