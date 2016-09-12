@@ -14,7 +14,7 @@ These are some information about the exam obtained after my three attempts (payi
  6. a question could contain multiple faults (variable number)
 
 after write my own rules I start to write my own script... this is a evolution of the original one that helps me pass the exam.
-'''
+```
 $ python tshoot.py -h
 
 usage: tshoot.py [-h] [-f FILE] [-s SCENARIO] [-v VERSION]
@@ -33,17 +33,17 @@ optional arguments:
   --no-hide-in-insertion
   --load-excel-in-sql
   -d, --debug
-'''
+```
 ==== first step - from excel to SQLite ====
 
 create an excel file with your favourite name. this name needs to be specified in -f extension (if you do not specify anything, 'ts' will be used and -f is not needed). An extension will be concatenate to this string (.sqllite, .xlsx, .log)
 
 the excel table needs to contain this structure (first row will be skipped during reading and insert into SQL)
 
-'''
+```
 id	scenario	ver		fault			     question	router	status	difficult	ManualSelection
 38	lab-21		0.1		hostname R10	 4			  R1		  OK		  3			    None
-'''
+```
 
 id = id number of fault (must be UNIQUE)
 scenario = identify a wide scenario / lab structure
@@ -56,7 +56,7 @@ difficult = give a score to difficult of this fault (to be implementation)
 ManualSelection = (to be implementation)
 
 once filled the table we need to transfer this infos to sqlite DB with '--load-excel-in-sql' script extension (if a file already exist previous data will be erased). A new file '.sqlite3' will contains DB data
-'''
+```
 $ python tshoot.py --load-excel-in-sql
 
 THIS OPERATION WILL DELETE fault TABLE CONTAINED INTO FILE ts.sqlite3
@@ -66,14 +66,14 @@ Continue y/[N]: y
 /Library/Python/2.7/site-packages/openpyxl/reader/worksheet.py:322: UserWarning: Unknown extension is not supported and will be removed
   warn(msg)
 INFO:root:excel to sql LOADING...DONE
-'''
+```
 sqlite is now ready to be queried!!!
 
 ==== second step - query SQL, retrieve faults and insert them into devices ====
 
 At this time multiple scenarios and version are present inside sqlite 'fault' table. Next step is specify what choose by lunch tshoot.py without extensions. the script will suggest you step by step what you can specify with -s (scenario) and -v (version).
 
-'''
+```
 $ python tshoot.py 
 
 ++++++++++++++++++++++++++++++++++++
@@ -93,7 +93,7 @@ summary versions inside sql for 'lab-21':
 ----------------------------------
 
 $ python tshoot.py -s lab-21 -s 0.1
-'''
+```
 
 these are the minimum script extensions required to successfully start inserting faults into devices
 
