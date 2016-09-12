@@ -14,7 +14,7 @@ These are some information about the exam obtained after my three attempts (payi
  6. a question could contain multiple faults (variable number)
 
 after write my own rules I start to write my own script... this is a evolution of the original one that helps me pass the exam.
-'''
+''''
 $ python tshoot.py -h
 
 usage: tshoot.py [-h] [-f FILE] [-s SCENARIO] [-v VERSION]
@@ -33,7 +33,7 @@ optional arguments:
   --no-hide-in-insertion
   --load-excel-in-sql
   -d, --debug
-'''
+''''
 ==== first step - from excel to SQLite ====
 
 create an excel file with your favourite name. this name needs to be specified in -f extension (if you do not specify anything, 'ts' will be used and -f is not needed). An extension will be concatenate to this string (.sqllite, .xlsx, .log)
